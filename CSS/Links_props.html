@@ -1,0 +1,48 @@
+<!-- 
+В CSS существуют специальные псевдо-свойства. Они описывают не сами элементы, а их состояние. Указываются после селектора
+с префиксом ":".
+
+На примере ссылок рассматриваются следующие псевдо-свойства:
+
+1. hover - состояние, когда на элемент наведен курсор мыши
+2. visited - состояние ссылки, которая уже была посещена
+
+ -->
+
+ <html>
+	<head>
+		<title>Свойство word-spacing</title>
+		<style type="text/css">
+		body 
+		{
+			color: #000000;
+			background-color: #ffffff;
+			font-family: arial, verdana, sans-serif;
+			font-size: 12px;
+		}
+
+		.one
+		{
+			word-spacing: normal;
+		}
+		.two
+		{
+			word-spacing: 20px;
+		}
+		.three
+		{
+			word-spacing: -3px;
+		}
+		</style>
+	</head>
+	<body>
+			<h1>word-spacing</h1>
+
+			<p class="one">
+				Стандартный пробел между словами</p>
+			<p class="two">
+				Пробел в 20px пикселей между каждым словом.</p>
+			<p class="three">
+				Между каждым словом пробел уменьшен на один пиксель</p>
+	</body>
+</html>
