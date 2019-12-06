@@ -2,7 +2,7 @@ var board = document.getElementsByClassName('board')[0],// Игровое пол
 	player = document.getElementsByClassName('gamer')[0],//Строка хода
 	element, innerText 
 	gamer1 = true,//Показывает, какой игрок сейчас ходит
-	gameTable = [[null, null, null,] [null, null, null,] [null, null, null,]], // Матрица игры
+	gameTable = [[null, null, null], [null, null, null], [null, null, null]], // Матрица игры
 	nullCount = 9, //Количество оставшихся ходов
 	winner = null;
 
@@ -15,8 +15,8 @@ for (var i = 0; i < 9; i++) {
 	innerElment = document.createElement('div');
 	innerElment.classList.add('inner-cell');
 	innerElment.onclick = tableClick;
-	innerElment.settAttribute('x', (i % 3).topstring());
-	innerElment.settAttribute('y', parseInt(i / 3).topstring());//y это номер строки, x - номер столбца
+	innerElment.setAttribute('x', (i % 3).toString());
+	innerElment.setAttribute('y', parseInt(i / 3).toString());//y это номер строки, x - номер столбца
 	element.appendChild(innerElment);
 	board.appendChild(element);
 }
@@ -25,10 +25,47 @@ document.getElementsByClassName('button')[0].onclick = reset;
 // */
 function tableClick() {
 	if (this.innerText == '') {
-		this.innerText = gmer1 ? 'X' : 'O';
+		this.innerText = gamer1 ? 'X' : 'O';
 		var y = this.getAttribute('y'), x = this.getAttribute('x');
 		gameTable[y][x] = gamer1;
 		nullCount--;
-		if ((game))
+		if ((gameTable[y][0] === gamer1 && gameTable[y][1] === gamer1 && gameTable[y][2] === gamer1) || 
+			(gameTable[0][x] === gamer1 && gameTable[1][x] === gamer1 && gameTable[2][x] === gamer1) ||
+			(gameTable[0][0] === gamer1 && gameTable[1][1] === gamer1 && gameTable[2][2] === gamer1) ||
+			(gameTable[2][0] === gamer1 && gameTable[1][1] === gamer1 && gameTable[0][2] === gamer1)) {
+			winner = gamer1;
+		}
+		gamer1 = !gamer1;
+		player.innerText = gamer1 ? 'Сейчас ходит X' : 'Сейчас ходит O';
+		if (nullCount == 0 || winner !== null) {
+			if (winner !== null) {
+				if  ( confirm('Победили ' + (winner ? 'X' : 'O') + '.\n Желаете сыграть еще?')) {
+					reset();
+				}
+			}
+			else if (confirm('Игра закончилась в ничью.\nЖелаете сыграть ещё?')) {
+				reset();
+			}
+		}
+	}
+	else {
+		alert('Недопустимый ход');
 	}
 }
+
+/**
+* Функция сброса параметро игры
+*/
+function reset() {
+	gamer1 = true; // Показывает, какой игрок сейчас ходит
+	gameTable = [[null, null, null], [null, null, null], [null, null, null]]; // Матрица игры
+	nullCount = 9; // Количество оставшихся ходов
+	winner = null;
+	var table = document.getElementsByClassName('inner-cell');
+	for (var i = 0; i < table.length; i++) {
+		table[i].innerText = '';
+	}
+	player.innerText = 'Сейчас ходит X';
+}
+
+
