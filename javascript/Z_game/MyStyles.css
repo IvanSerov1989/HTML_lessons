@@ -1,11 +1,11 @@
 #snake-field{
-	display:  inline-block;
+	display: inline-block;
 }
 #snake-renew,#snake-start{
 	width: 150px;
 	padding: 15px;
 	color: white;
-	background-color: green;
+	background-color: blue;
 	text-align: center;
 	cursor: pointer;
 	float: left;
@@ -24,12 +24,12 @@ td.game-table-cell{
 	background-color: white;
 }
 .food-unit{
-	background-color: red;
+	background-color: violet;
 }
 .buttons{
 	display: inline-block;
 }
 .wrap{
-	margin: 30px auto 0;
+	margin:30px auto 0;
 	text-align: center;
 }
