@@ -1,0 +1,29 @@
+<!-- 
+
+Элемент form - элемент разметки для отправки на сервер значений введеных пользователем.
+
+аттрибуты элемента form:
+	
+	1. action   - адрес ресурса, который должен обработать данные введеные в форму
+	2. method   - HHTP глагол (метод), которым будет отправлен запрос
+	3. target   - указывает, как будут отображены результаты, в текущем окне либо новой вкладке
+ -->
+
+  <html>
+	<head>
+		<title>Тег form</title>
+	</head>
+	<body>
+		<form method="post" target="_blank">
+			Login
+			<input type="text" name="login" value="" />
+			<br/>
+
+			Password
+			<input type="password" name="password" value="" />
+			
+			<!-- Кнопка для отправки данных на сервер -->
+			<input type="submit" value="Enter" />
+		<form/>
+	</body>
+</html>
